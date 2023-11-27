@@ -1,16 +1,24 @@
 package ecommerceJoias;
 
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import ecommerceJoias.controller.ProdutoController;
+import ecommerceJoias.model.JoiaFeminina;
+import ecommerceJoias.model.Produto;
+
+
 public class Menu {
 	public static void main(String[] args) {
+		ProdutoController produto = new ProdutoController();
+		
 		Scanner receba = new Scanner(System.in);
 		int opcao, id;
 		String nomeProduto, tipo, material;
 		float preco;
 		
+		System.out.println("\nJoais cadastradas em sistema:\n ");
+		Produto j1 = new JoiaFeminina("Anel","Ouro","Anel Cobra", 01,200);
 		
 		System.out.println("•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
         System.out.println(" *************Shimmer Jewls***************");		
@@ -74,19 +82,24 @@ public class Menu {
         	}
         	System.out.println(" Digite o valor do Produto: R$ ");
         	preco = receba.nextFloat();
+        	produto.cadastrarProdutos(j1);
         case 2: 
         	System.out.println("Listar todos as Joias Cadastradas: \n");
+        	produto.listarProdutos();
         	break;
         case 3: 
         	System.out.println("Buscar Produto por ID: ");
         	System.out.println(" Informe o ID do Produto que deseja buscar: ");
         	id = receba.nextInt();
+        	produto.buscarProduto(id);
         	break;
         case 4: 
         
         	System.out.println(" Atualizar os dados do Produto na lista: ");
         	System.out.println(" Informe o ID do Produto: ");
-        	/*if (id != null) {
+        	id = receba.nextInt();
+        	var buscaProduto = produto.buscarNaCollection(id);
+        	if (buscaProduto != null) {
         		System.out.println("Informe o nome do Produto: ");
         		nomeProduto = receba.nextLine();
         		System.out.println("Informe o Preço do Produto: ");
@@ -97,14 +110,14 @@ public class Menu {
         		material = receba.nextLine();
         }else{
        System.out.println("Produto não encontrado! Necessário cadastrar produto.");
-        }*/ 
-        	// vou colocar depois que fizer a lista para buscar o produto nela e poder atualizar.
+        }
+        	produto.atualizarProduto(j1);
         	break;
         case 5: 
         	System.out.println("Deletar Produto\n\n");
         	System.out.println("Informe o ID do Produto: ");
         	id = receba.nextInt();
-        	//colocar metodo de deletar produto depois
+        	produto.deletarProduto(id);
         	break;
         	
         default:
