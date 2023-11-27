@@ -24,7 +24,6 @@ public class Menu {
 		System.out.println("•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
         System.out.println("Digite a opção desejada:                                        ");
 		System.out.println("                                                                                    "+ Cores.TEXT_RESET);
-       opcao = receba.nextInt();
    	try {
 		opcao = receba.nextInt();
 		}catch(InputMismatchException e) {
