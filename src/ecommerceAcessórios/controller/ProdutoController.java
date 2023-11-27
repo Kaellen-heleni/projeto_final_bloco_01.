@@ -1,8 +1,10 @@
-package ecommerceJoias.controller;
+package ecommerceAcessórios.controller;
 
 import java.util.ArrayList;
-import ecommerceJoias.model.Produto;
-import ecommerceJoias.repository.JoiasRepository;
+
+
+import ecommerceAcessórios.model.Produto;
+import ecommerceAcessórios.repository.JoiasRepository;
 
 public class ProdutoController implements JoiasRepository {
 private ArrayList<Produto>  listaProdutos = new ArrayList<Produto>();
@@ -58,6 +60,15 @@ public int gerarId() {
 				return produto;
 			}}
 		return null;
+	}
+
+	@Override
+	public void visualizarProduto(int id) {
+		var produto = buscarNaCollection(id);
+		if (produto != null)
+			produto.visualizarProduto();
+		
+		
 	}
 	
 

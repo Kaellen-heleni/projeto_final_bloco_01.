@@ -1,61 +1,48 @@
-package ecommerceJoias.model;
+package ecommerceAcessórios.model;
 
 public abstract class Produto {
-	private String tipo, material, nomeProduto;
-	private int id;
-	private int  publico;
+	private String  nomeProduto, categoria;
+	private int id, tipo;
 	private float preco;
 	
-	public Produto(String tipo, String material, String nomeProduto, int id, float preco) {
+	
+	public Produto( int id, int tipo, String nomeProduto, String categoria, float preco) {
 		this.tipo = tipo;
-		this.material = material;
 		this.nomeProduto = nomeProduto;
 		this.id = id;
 		this.preco = preco;
-		this.publico = publico;
+		this.categoria = categoria;
+		
 	}
 	public void visualizarProduto() {
-		String publico = "";
+		String tipo = "";
 		
-		switch(this.publico) {
+		switch(this.tipo) {
 		case 1:
-		publico = "Feminino";
+		tipo = "Joia";
 			break;
 		case 2:
-		publico = "Masculino";
+		tipo = "Bijuteria";
 			break;
 		}
+	
 		
 		System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
 		System.out.println("ID do Produto: "+this.getId());
 		System.out.println("Tipo do Produto: "+this.getTipo());
 		System.out.println("Nome do Produto: "+this.getNomeProduto());
-	    System.out.println("Material do Produto: "+this.getMaterial());
-	    System.out.println("Público principal do Produto: "+publico);
+	    System.out.println("Esse acessório é uma:" +tipo);
 		System.out.println("Valor do Produto: R$ "+this.getPreco());
 		System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
 	}
 
-	public int getPublico() {
-		return publico;
-	}
-	public void setPublico(int publico) {
-		this.publico = publico;
-	}
-	public String getTipo() {
+	
+	public int getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(int tipo) {
 		this.tipo = tipo;
-	}
-
-	public String getMaterial() {
-		return material;
-	}
-
-	public void setMaterial(String material) {
-		this.material = material;
 	}
 
 	public String getNomeProduto() {
@@ -80,6 +67,12 @@ public abstract class Produto {
 
 	public void setPreco(float preco) {
 		this.preco = preco;
+	}
+	public String getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 
 	

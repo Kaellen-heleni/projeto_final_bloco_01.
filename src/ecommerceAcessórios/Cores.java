@@ -1,4 +1,4 @@
-package ecommerceJoias;
+package ecommerceAcessórios;
 
 public class Cores {
 

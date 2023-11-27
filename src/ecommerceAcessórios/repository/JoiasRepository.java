@@ -1,6 +1,6 @@
-package ecommerceJoias.repository;
+package ecommerceAcessórios.repository;
 
-import ecommerceJoias.model.Produto;
+import ecommerceAcessórios.model.Produto;
 
 public interface JoiasRepository {
 	public void cadastrarProdutos(Produto produto);
@@ -8,5 +8,6 @@ public interface JoiasRepository {
 	public void buscarProduto (int id);
 	public void atualizarProduto (Produto produto);
 	public void deletarProduto (int id);
+	public void visualizarProduto(int id);
 
 }
