@@ -2,7 +2,7 @@ package ecommerceAcessórios.controller;
 
 import java.util.ArrayList;
 
-
+import ecommerceAcessórios.Cores;
 import ecommerceAcessórios.model.Produto;
 import ecommerceAcessórios.repository.JoiasRepository;
 
@@ -13,7 +13,7 @@ int id =0;
 	@Override
 	public void cadastrarProdutos(Produto produto) {
 		listaProdutos.add(produto);
-		System.out.println("\n O Produto "+produto.getNomeProduto()+" foi cadastrado no sistema com sucesso!");
+		System.out.println("\n O Produto "+Cores.TEXT_YELLOW_BOLD+produto.getNomeProduto()+Cores.TEXT_RESET+" foi cadastrado no sistema com sucesso!");
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public int gerarId() {
 				if (produto != null)
 					produto.visualizarProduto();
 				else
-					System.out.println("\nO Produto de ID "+id+"não foi encontrado. \nPor favor, cadastre o produto no sistema!");
+					System.out.println("\nO Produto de ID "+Cores.TEXT_YELLOW_BOLD+id+Cores.TEXT_RESET+" não foi encontrado. \nPor favor, cadastre o produto no sistema!");
 	}
 
 	@Override

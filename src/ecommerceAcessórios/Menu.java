@@ -13,33 +13,33 @@ public class Menu {
 		ProdutoController produto = new ProdutoController();
 		
 		Scanner receba = new Scanner(System.in);
-		int opcao, id, tipo, material, materialBiju;
-		String nomeProduto, categoria;
+		int opcao, id, tipo, material, materialBiju, categoria;
+		String nomeProduto;
 		float preco;
 		
-		System.out.println("\nAcessórios cadastrados em sistema:\n ");
-		Bijuteria b1 = new Bijuteria(produto.gerarId(),2, "Colar RBD", "Colar",50,3);
+	/*	System.out.println("\nAcessórios cadastrados em sistema:\n ");
+		Bijuteria b1 = new Bijuteria(produto.gerarId(),2, "Colar RBD", 1,50,3);
 		produto.cadastrarProdutos(b1);
-	    Joia j1 = new Joia(produto.gerarId(),1,"Anel vivara","Anel",300,2);
+	    Joia j1 = new Joia(produto.gerarId(),1,"Anel vivara",2,300,2);
 		produto.cadastrarProdutos(j1);
-		Bijuteria b2 = new Bijuteria(produto.gerarId(),2, "Colar Gravata Pingente Azul", "Colar",300,2);
+		Bijuteria b2 = new Bijuteria(produto.gerarId(),2, "Colar Gravata Pingente Azul", 1,300,2);
 		produto.cadastrarProdutos(b2);
-		Bijuteria b3 = new Bijuteria(produto.gerarId(),2, "Brinco Argola Média", "Brinco",150,1);
+		Bijuteria b3 = new Bijuteria(produto.gerarId(),2, "Brinco Argola Média", 4,150,1);
 		produto.cadastrarProdutos(b3);
-		Bijuteria b4 = new Bijuteria(produto.gerarId(),2, "Anel Falange", "Anelr",70,1);
+		Bijuteria b4 = new Bijuteria(produto.gerarId(),2, "Anel Falange", 2,70,1);
 		produto.cadastrarProdutos(b4);
-	    Joia j2 = new Joia(produto.gerarId(),1,"Brinco Gota","Brinco",276,1);
+	    Joia j2 = new Joia(produto.gerarId(),1,"Brinco Gota",4,276,1);
 		produto.cadastrarProdutos(j2);
-	    Joia j3= new Joia(produto.gerarId(),1,"Colar Gargantilha com Zircônias","Colar",422,1);
+	    Joia j3= new Joia(produto.gerarId(),1,"Colar Gargantilha com Zircônias",1,422,1);
 		produto.cadastrarProdutos(j3);
-		Bijuteria b5 = new Bijuteria(produto.gerarId(),2, "Pulseira Corações", "Pulseira",127,2);
+		Bijuteria b5 = new Bijuteria(produto.gerarId(),2, "Pulseira Corações", 3,127,2);
 		produto.cadastrarProdutos(b5);
-	    Joia j4= new Joia(produto.gerarId(),1,"Bracelete","Pulseira",284,1);
+	    Joia j4= new Joia(produto.gerarId(),1,"Bracelete",3,284,1);
 		produto.cadastrarProdutos(j4);
-	    Joia j5= new Joia(produto.gerarId(),1,"Colar Gravata Swavaroski","Colar",760,2);
+	    Joia j5= new Joia(produto.gerarId(),1,"Colar Gravata Swavaroski",1,760,2);
 	    produto.cadastrarProdutos(j5);
-	    produto.listarProdutos();
-
+	    produto.listarProdutos();*/
+while(true) {
 		System.out.println("•••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••");
         System.out.println(" *************Shimmer Jewls***************");		
         System.out.println("                   1 - Cadastrar produtos                        " );
@@ -69,37 +69,20 @@ public class Menu {
         switch (opcao) {
         case 1:
         	System.out.println(" Cadastrar um novo Produto: ");
-        	 keyPress();
         	System.out.println(" Digite o ID do Produto: ");
         	id = receba.nextInt();
+        	var buscaProduto = produto.buscarNaCollection(id);
+        	if (buscaProduto == null) {
         	System.out.println(" Digite o Nome do Produto: \n");
-        	nomeProduto = receba.nextLine();
-        	keyPress();
-        	System.out.println(" Digite o tipo do Produto: C - Colar; \nA - Anel; \nP - Pulseira; \nB - Brinco;  ");
-        	categoria  = receba.nextLine();
-        	 keyPress();
-        	     switch(categoria) {
-        	        case "C":
-        		      categoria = "Colar";
-        	     break;
-        	       case "A":
-        	     	categoria = "Anel";
-        	    break;
-        	       case "P":
-        		    categoria = "Pulseira";
-        		    break;
-        	    case "B":
-        		categoria = "Brinco";
-        		   break;
-        		   default:
-        			   System.out.println(Cores.TEXT_RED_UNDERLINED + Cores.ANSI_BLACK_BACKGROUND + "\nOpção Inválida!");
-        	}
-        	do{ System.out.println(" Digite a Categoria do Produto: 1 - Joia; \n2  - Bijuteria ");
-        	tipo = receba.nextInt();
-        	 keyPress();
-        	}while(tipo== 1 && tipo ==2);
-          	System.out.println(" Digite o valor do Produto: R$ ");
+			receba.skip("\\R?");
+			nomeProduto = receba.nextLine();
+         	System.out.println(" Digite o valor do Produto: R$ ");
         	preco = receba.nextFloat();
+        	System.out.println(" Digite o tipo do Produto: 1 - Colar; \n2 - Anel; \n3 - Pulseira; \n4 - Brinco;  ");
+        	categoria  = receba.nextInt();
+         	do{ System.out.println(" Digite a Categoria do Produto: 1 - Joia; \n2  - Bijuteria ");
+        	tipo = receba.nextInt();
+        	}while(tipo== 1 && tipo ==2);
         	switch (tipo) {
         	case 1:
         		System.out.println("Informe qual o material da sua Jóia: \n1- Ouro, \n2 - Prata, \n3 - Zircônia");
@@ -113,11 +96,13 @@ public class Menu {
         		break;
         		default:
      			   System.out.println(Cores.TEXT_RED_UNDERLINED + Cores.ANSI_BLACK_BACKGROUND + "\nOpção Inválida!");
-                   keyPress();
+     			   keyPress();
                    break;
         	}
-        	keyPress();
-        	break;
+        	}else {
+        		System.out.println(Cores.ANSI_WHITE_BACKGROUND+Cores.TEXT_RED_BOLD+"Já existe um Produto com esse ID cadastrado em sistema!! \nCadastre um novo Produto...");
+        	    System.out.println("                                                            "+Cores.TEXT_RESET);
+        	}
         case 2: 
         	System.out.println("Listar todos as Joias Cadastradas: \n");
         	produto.listarProdutos();
@@ -131,37 +116,20 @@ public class Menu {
         	keyPress();
         	break;
         case 4: 
-        
         	System.out.println(" Atualizar os dados do Produto na lista: ");
         	 keyPress();
         	System.out.println(" Informe o ID do Produto: ");
         	id = receba.nextInt();
         	 keyPress();
-        	var buscaProduto = produto.buscarNaCollection(id);
-        	if (buscaProduto != null) {
-        		id = buscaProduto.getId();
+        	var buscaProduto2 = produto.buscarNaCollection(id);
+        	if (buscaProduto2 != null) {
+        		id = buscaProduto2.getId();
         		System.out.println(" Digite o Nome do Produto: ");
             	nomeProduto = receba.nextLine();
-            	System.out.println(" Digite o tipo do Produto: C - Colar; \nA - Anel; \nP - Pulseira; \nB - Brinco;  ");
-            	categoria  = receba.nextLine();
-            	     switch(categoria) {
-            	        case "C":
-            		      categoria = "Colar";
-            	     break;
-            	       case "A":
-            	     	categoria = "Anel";
-            	    break;
-            	       case "P":
-            		    categoria = "Pulseira";
-            		    break;
-            	    case "B":
-            		categoria = "Brinco";
-            		   break;
-            		   default:
-            			   System.out.println(Cores.TEXT_RED_UNDERLINED + Cores.ANSI_BLACK_BACKGROUND + "\nOpção Inválida!");
-            	     }
-            	System.out.println(" Digite o valor do Produto: R$ ");
-                	preco = receba.nextFloat();
+             	System.out.println(" Digite o valor do Produto: R$ ");
+            	preco = receba.nextFloat();
+            	System.out.println(" Digite o tipo do Produto: \n1- Colar; \n2 - Anel; \n3 - Pulseira; \n4 - Brinco;  ");
+            	categoria  = receba.nextInt();
             	System.out.println(" Digite a Categoria do Produto: 1 - Joia; \n2  - Bijuteria ");
             	tipo = receba.nextInt();
             	switch (tipo) {
@@ -207,7 +175,7 @@ public class Menu {
            keyPress();
 			break;
         }
-	}
+	}}
 	public static void keyPress() {
 		try {
 			System.out.println(Cores.TEXT_RESET+"\n\nPressione Enter para Continuar...");

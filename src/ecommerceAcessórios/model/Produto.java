@@ -1,12 +1,12 @@
 package ecommerceAcessórios.model;
 
 public abstract class Produto {
-	private String  nomeProduto, categoria;
-	private int id, tipo;
+	private String  nomeProduto;
+	private int id, tipo, categoria;
 	private float preco;
 	
 	
-	public Produto( int id, int tipo, String nomeProduto, String categoria, float preco) {
+	public Produto( int id, int tipo, String nomeProduto, int categoria, float preco) {
 		this.tipo = tipo;
 		this.nomeProduto = nomeProduto;
 		this.id = id;
@@ -25,15 +25,28 @@ public abstract class Produto {
 		tipo = "Bijuteria";
 			break;
 		}
+		String tipoProduto = "";
+		switch(this.categoria) {
+		case 1:
+			tipoProduto =" Colar";
+			break;
+		case 2: tipoProduto = "Anel";
+		break;
+		case 3: tipoProduto = "Pulseira";
+		break;
+		case 4: tipoProduto = "Brinco";
+		break;
+			
+		}
+		
 	
 		
 		System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
 		System.out.println("ID do Produto: "+this.getId());
-		System.out.println("Tipo do Produto: "+this.getTipo());
+		System.out.println("Tipo do Produto: "+tipoProduto);
 		System.out.println("Nome do Produto: "+this.getNomeProduto());
 	    System.out.println("Esse acessório é uma:" +tipo);
 		System.out.println("Valor do Produto: R$ "+this.getPreco());
-		System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
 	}
 
 	
@@ -68,10 +81,10 @@ public abstract class Produto {
 	public void setPreco(float preco) {
 		this.preco = preco;
 	}
-	public String getCategoria() {
+	public int getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(String categoria) {
+	public void setCategoria(int categoria) {
 		this.categoria = categoria;
 	}
 

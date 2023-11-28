@@ -2,8 +2,9 @@ package ecommerceAcessórios.model;
 
 public class Joia extends Produto {
 	private int material;
-	public Joia(int id,int tipo, String nomeProduto, String categoria,  float preco, int material) {
+	public Joia(int id,int tipo, String nomeProduto, int categoria,  float preco, int material) {
 		super(id, tipo, nomeProduto, categoria, preco);
+		this.setMaterial(material);
 		
 	}
 public int getMaterial() {
@@ -12,9 +13,18 @@ public int getMaterial() {
 	public void setMaterial(int material) {
 		this.material = material;
 	}
-public void visualizar() {
+public void visualizarProduto() {
+	String materialJoia ="";
+	switch(this.material) {
+	case 1: materialJoia ="Ouro";
+	break;
+	case 2: materialJoia = "Prata";
+	break;
+	case 3: materialJoia = "Zircônia";
+	break;
+	}
 	super.visualizarProduto();
-	System.out.println(" Material da Joia: "+this.material);
+	System.out.println(" Material da Joia: "+materialJoia);
 }
 	}
 
